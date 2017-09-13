@@ -1,0 +1,18 @@
+server:
+  port: 8762
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8762/eureka/
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jomalonejia/CzPortal-Server
+          search-paths: config-repositories
