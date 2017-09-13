@@ -20,6 +20,8 @@
     <modules>
         <module>cz-portal-registry</module>
         <module>cz-portal-config</module>
+        <module>config-client</module>
+        <module>rabbit-hello</module>
     </modules>
 
     <properties>
