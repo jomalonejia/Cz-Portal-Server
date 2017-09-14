@@ -1,0 +1,15 @@
+server:
+  port: 8766
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+    #  turbine.appConfig=
+     # turbine.aggregator.clusterConfig= default
+      #turbine.clusterNameExpression= new String("default")
+turbine:
+  app-config: cz-portal-config
+  app-config-list: default
+  cluster-name-expression: new String("default")
+
