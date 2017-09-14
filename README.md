@@ -1,1 +1,2 @@
-# czPortal
+# CzPortal Server
+# Spring Cloud
