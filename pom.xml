@@ -21,12 +21,11 @@
         <module>cz-portal-registry</module>
         <module>cz-portal-config</module>
         <module>config-client</module>
-        <module>rabbit-hello</module>
-        <module>trace-1</module>
-        <module>trace-2</module>
         <module>cz-portal-gateway</module>
         <module>cz-portal-zipkin</module>
         <module>cz-portal-monitor</module>
+        <module>cz-portal-service-order</module>
+        <module>cz-portal-common</module>
     </modules>
 
     <properties>

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: cz-portal-service-order
+server:
+  port: 9101
+#eureka:
+ # client:
+  #  service-url:
+   #   defaultZone: http://localhost:8761/eureka

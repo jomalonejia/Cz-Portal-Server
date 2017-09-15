@@ -1,2 +1,21 @@
 server:
   port: 8767
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  sleuth:
+    enabled: false
+
+zipkin:
+  storage:
+    type: elasticsearch
+    elasticsearch:
+        cluster: elasticsearch
+        hosts: http://localhost:32769/
+        index: zipkin
+        index-shards: 5
+        index-replicas: 1
