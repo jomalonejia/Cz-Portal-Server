@@ -1,6 +1,7 @@
 package com.cz;
 
-import com.cz.service.IOrderService;
+import com.cz.domain.Order;
+import com.cz.service.OrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = OrderApplication.class)
+@SpringBootTest()
 public class ApplicationTests {
 
+
     @Autowired
-    private IOrderService orderService;
+    private OrderService orderService;
 
     @Test
-    public void test1(){
-
-        System.out.println(orderService.selectById(1L));
+    public void contextLoads() {
+        Order order = orderService.selectById("1");
+        System.out.println(order.toString());
     }
 
 }

@@ -24,8 +24,9 @@
         <module>cz-portal-gateway</module>
         <module>cz-portal-zipkin</module>
         <module>cz-portal-monitor</module>
-        <module>cz-portal-service-order</module>
         <module>cz-portal-common</module>
+        <module>cz-portal-service-order</module>
+        <module>cz-portal-service-item</module>
     </modules>
 
     <properties>
@@ -34,6 +35,12 @@
         <docker.plugin.version>0.4.13</docker.plugin.version>
         <docker.image.prefix>spring-boot-cloud</docker.image.prefix>
         <spring.cloud.version>Dalston.RELEASE</spring.cloud.version>
+        <mybatis-spring-boot-starter.version>1.3.0</mybatis-spring-boot-starter.version>
+        <mybatis-typehandlers-jsr310.version>1.0.2</mybatis-typehandlers-jsr310.version>
+        <mybatisplus-spring-boot-starter.version>1.0.4</mybatisplus-spring-boot-starter.version>
+        <mybatis-plus.version>2.1.1</mybatis-plus.version>
+        <druid.version>1.0.29</druid.version>
+        <logstash-logback-encoder.version>4.7</logstash-logback-encoder.version>
     </properties>
 
     <dependencies>
@@ -56,13 +63,43 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- mybatis plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatisplus-spring-boot-starter</artifactId>
+                <version>${mybatisplus-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-typehandlers-jsr310</artifactId>
+                <version>${mybatis-typehandlers-jsr310.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash-logback-encoder.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

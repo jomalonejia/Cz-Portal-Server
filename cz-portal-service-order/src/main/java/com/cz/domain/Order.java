@@ -1,9 +1,8 @@
 package com.cz.domain;
 
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
-import com.cz.core.OrderStatus;
-import core.base.BaseEntity;
+import com.cz.core.status.OrderStatus;
+import core.base.BaseModel;
 import lombok.*;
 
 import java.util.Date;
@@ -11,13 +10,11 @@ import java.util.Date;
 /**
  * Created by jomalone_jia on 2017/9/15.
  */
-@Setter
-@Getter
-@ToString
+@TableName("front_order")
+@Data
 @NoArgsConstructor
 @EqualsAndHashCode
-@TableName("front_order")
-public class Order extends BaseEntity<Order>{
+public class Order extends BaseModel<Order>{
     private String orderId;
     private String userId;
     private OrderStatus status;
