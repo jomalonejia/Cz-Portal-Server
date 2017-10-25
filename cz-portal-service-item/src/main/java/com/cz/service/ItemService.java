@@ -3,15 +3,14 @@ package com.cz.service;
 import com.baomidou.mybatisplus.service.IService;
 import com.cz.domain.Item;
 
+import java.util.List;
+
 /**
- * Created by oukingtim
+ * Created by jomalone_jia
  */
 public interface ItemService extends IService<Item> {
 
-    /**
-     * 根据用户名查询用户
-     * @param username
-     * @return
-     */
+
+    List<Item> listHotItems();
 
 }

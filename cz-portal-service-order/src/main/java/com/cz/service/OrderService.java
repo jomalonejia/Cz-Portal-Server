@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.service.IService;
 import com.cz.domain.Order;
 
 /**
- * Created by oukingtim
+ * Created by jomalone_jia
  */
 public interface OrderService extends IService<Order> {
 

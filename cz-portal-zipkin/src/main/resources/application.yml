@@ -15,7 +15,7 @@ zipkin:
     type: elasticsearch
     elasticsearch:
         cluster: elasticsearch
-        hosts: http://localhost:32769/
+        hosts: http://localhost:9300/
         index: zipkin
         index-shards: 5
         index-replicas: 1

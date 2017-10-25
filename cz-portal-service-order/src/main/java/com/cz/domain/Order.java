@@ -15,7 +15,6 @@ import java.util.Date;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Order extends BaseModel<Order>{
-    private String orderId;
     private String userId;
     private OrderStatus status;
     private Integer postFee;

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 /**
- * Created by oukingtim
+ * Created by jomalone_jia
  */
 @Configuration
 @MapperScan("com.cz.mapper*")
