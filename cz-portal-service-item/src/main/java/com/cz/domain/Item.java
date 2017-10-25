@@ -25,8 +25,6 @@ public class Item extends BaseModel<Item>{
     @TableField(exist = false)
     private Category category;
     @TableField(exist = false)
-    private List<String> showImages;
-    @TableField(exist = false)
-    private List<String> minusShowImages;
+    private List<String> shownImages;
     private String describe;
 }

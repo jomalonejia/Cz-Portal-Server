@@ -22,4 +22,9 @@ public class ItemServiceImpl extends ServiceImpl<ItemMapper,Item> implements Ite
     public List<Item> listHotItems() {
         return itemMapper.listHotItems();
     }
+
+    @Override
+    public Item getItemDetail(String itemId) {
+        return itemMapper.getItemDetail(itemId);
+    }
 }

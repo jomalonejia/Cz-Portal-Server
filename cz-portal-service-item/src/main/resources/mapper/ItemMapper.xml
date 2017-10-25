@@ -15,6 +15,22 @@
             <result property="name" column="name"/>
         </association>
     </resultMap>
+    
+    <resultMap id="itemDetail" type="com.cz.domain.Item">
+        <id property="id" column="item_id"/>
+        <result property="name" column="name"/>
+        <result property="price" column="price"/>
+        <result property="image" column="image"/>
+        <result property="describe" column="describe"/>
+        <association property="category" column="category" javaType="com.cz.domain.Category">
+            <id property="id" column="category_id"/>
+            <result property="parentId" column="parent_id"/>
+            <result property="name" column="name"/>
+        </association>
+        <collection property="shownImages" column="images" ofType="java.lang.String" javaType="ArrayList" >
+            <result property="url" column="url"></result>
+        </collection>
+    </resultMap>
 
     <select id="listHotItems" resultMap="item">
        SELECT
@@ -32,5 +48,25 @@
           on item.id = item_hot.item_id
         LEFT JOIN sys_category category
           on item.category_id = category.id
+    </select>
+    
+    <select id="getItemDetail" resultMap="itemDetail">
+        SELECT
+            item.id as item_id,
+            item.name,
+            item.price,
+            item.image,
+            item.describe,
+            category.id as category_id,
+            category.name,
+            category.parent_id,
+            images.url
+        FROM
+            sys_item item
+        LEFT JOIN sys_category category
+          on item.category_id = category.id
+        LEFT JOIN sys_item_images images
+          on item.id = images.item_id
+        WHERE item.id = #{itemId} AND NOT ISNULL(images.url)
     </select>
 </mapper>

@@ -9,8 +9,6 @@ import java.util.List;
  * Created by jomalone_jia
  */
 public interface ItemService extends IService<Item> {
-
-
     List<Item> listHotItems();
-
+    Item getItemDetail(String itemId);
 }

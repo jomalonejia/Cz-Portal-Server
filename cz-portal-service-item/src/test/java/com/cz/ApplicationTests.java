@@ -35,4 +35,10 @@ public class ApplicationTests {
         System.out.println(items);
     }
 
+    @Test
+    public void test3(){
+        Item itemDetail = itemService.getItemDetail("60e054fdd0c74824bbbac46bf7d08603");
+        System.out.println(itemDetail.toString());
+    }
+
 }
