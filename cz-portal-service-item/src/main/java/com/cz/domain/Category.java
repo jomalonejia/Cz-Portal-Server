@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Category extends BaseModel<Item> {
+public class Category extends BaseModel<Category> {
     @TableField
     private String name;
     @TableField(value = "parent_id")

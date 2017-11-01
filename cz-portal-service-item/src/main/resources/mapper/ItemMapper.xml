@@ -30,6 +30,15 @@
         <collection property="shownImages" column="images" ofType="java.lang.String" javaType="ArrayList" >
             <result property="url" column="url"></result>
         </collection>
+        <collection property="params" column="params" ofType="com.cz.domain.Param" javaType="ArrayList">
+            <id property="id" column="param_id"></id>
+            <result property="paramName" column="param_name"></result>
+            <result property="paramDescribe" column="param_describe"></result>
+            <collection property="paramDetails" column="param_details" ofType="com.cz.domain.ParamDetail" javaType="ArrayList">
+                <result property="paramValue" column="param_value"></result>
+                <result property="inventory" column="inventory"></result>
+            </collection>
+        </collection>
     </resultMap>
 
     <select id="listHotItems" resultMap="item">
@@ -60,13 +69,22 @@
             category.id as category_id,
             category.name,
             category.parent_id,
-            images.url
+            images.url,
+            param.id param_id,
+            param.param_name param_name,
+            param.param_describe param_describe,
+            item_param.param_value param_value,
+            item_param.inventory inventory
         FROM
             sys_item item
         LEFT JOIN sys_category category
-          on item.category_id = category.id
+          ON item.category_id = category.id
         LEFT JOIN sys_item_images images
-          on item.id = images.item_id
-        WHERE item.id = #{itemId} AND NOT ISNULL(images.url)
+          ON item.id = images.item_id
+        LEFT JOIN sys_item_param item_param
+          ON item_param.item_id = item.id
+        LEFT JOIN sys_param param
+          ON param.id = item_param.param_id
+        WHERE item.id = #{itemId}
     </select>
 </mapper>

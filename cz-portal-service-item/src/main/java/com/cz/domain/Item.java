@@ -26,5 +26,7 @@ public class Item extends BaseModel<Item>{
     private Category category;
     @TableField(exist = false)
     private List<String> shownImages;
+    @TableField(exist = false)
+    private List<Param> params;
     private String describe;
 }
