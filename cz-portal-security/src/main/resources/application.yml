@@ -5,7 +5,8 @@ spring:
     url: jdbc:mysql://localhost:3306/cz?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123456
-
+  redis:
+    host: localhost
 
 druid:
   pool:
@@ -13,6 +14,13 @@ druid:
     maxActive: 100
     minIdle: 10
 
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+  user:
+    name: user
+    password: 123456
 
 #mybatis-plus
 mybatis-plus:
@@ -28,4 +36,6 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+
+logging.level.org.springframework.security: DEBUG
 
