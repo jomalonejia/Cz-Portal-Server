@@ -5,10 +5,7 @@ import com.cz.service.ItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by jomalone_jia on 2017/10/20.
@@ -32,5 +29,10 @@ public class ItemController {
     @GetMapping("/listHotItems")
     public Object listHotItems(){
         return itemService.listHotItems();
+    }
+
+    @PostMapping("/addToCart")
+    public Object addToCart(){
+        return null;
     }
 }

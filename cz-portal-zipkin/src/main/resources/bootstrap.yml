@@ -1,3 +1,5 @@
 spring:
   application:
     name: cz-portal-zipkin
+erver:
+  port: 8767

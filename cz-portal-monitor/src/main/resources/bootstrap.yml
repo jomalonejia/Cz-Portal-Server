@@ -1,3 +1,5 @@
 spring:
   application:
     name: cz-portal-monitor
+server:
+  port: 8766
