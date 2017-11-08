@@ -1,13 +1,14 @@
-
-package core.base;
+package com.cz.base;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.util.Date;
 
+/**
+ * Created by jomalone_jia on 2017/11/8.
+ */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public abstract class BaseModel<T extends BaseModel> implements Serializable {

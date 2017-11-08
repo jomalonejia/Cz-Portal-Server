@@ -28,6 +28,7 @@
         <module>cz-portal-service-order</module>
         <module>cz-portal-service-item</module>
         <module>cz-portal-security</module>
+        <module>cz-portal-service-user</module>
     </modules>
 
     <properties>

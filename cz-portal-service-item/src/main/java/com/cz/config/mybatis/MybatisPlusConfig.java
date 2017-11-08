@@ -1,4 +1,4 @@
-package com.cz;
+package com.cz.config.mybatis;
 
 
 import com.baomidou.mybatisplus.enums.DBType;

@@ -1,7 +1,7 @@
 package com.cz.domain;
 
 import com.baomidou.mybatisplus.annotations.TableName;
-import core.base.BaseModel;
+import com.cz.base.BaseModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

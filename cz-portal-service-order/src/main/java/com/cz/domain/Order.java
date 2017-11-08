@@ -2,7 +2,7 @@ package com.cz.domain;
 
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.cz.core.status.OrderStatus;
-import core.base.BaseModel;
+import com.cz.base.BaseModel;
 import lombok.*;
 
 import java.util.Date;
