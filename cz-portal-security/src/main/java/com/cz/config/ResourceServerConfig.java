@@ -7,6 +7,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by jomalone_jia on 2017/11/7.
  */
@@ -20,6 +22,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
     public void configure(ResourceServerSecurityConfigurer resources) {
         resources.resourceId(DEMO_RESOURCE_ID).stateless(true);
     }
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         // @formatter:off
@@ -33,7 +36,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
                 .anonymous()
                 .and()
                 .authorizeRequests()
-//                    .antMatchers("/product/**").access("#oauth2.hasScope('select') and hasRole('ROLE_USER')")
+                .antMatchers("/product/**").access("#oauth2.hasScope('select') and hasAuthority('USER')")
                 .antMatchers("/order/**").authenticated();//配置order访问控制，必须认证过后才可以访问
         // @formatter:on
     }
