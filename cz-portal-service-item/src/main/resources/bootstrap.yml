@@ -1,6 +1,9 @@
 spring:
   application:
     name: cz-portal-service-item
+  output:
+      ansi:
+        enabled: always
 server:
   port: 9102
 eureka:

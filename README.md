@@ -1,7 +1,7 @@
 
 # Cz-Portal-Front-Shop
 
-This project provides cz-portal-index and cz-portal-shop's  backend services
+This project provides [cz-portal-index](https://github.com/jomalonejia/Cz-Portal-Front-Index) and [cz-portal-shop](https://github.com/jomalonejia/Cz-Portal-Front-Shop)'s  backend services
 
 Services Introduce
 ------------------
@@ -28,7 +28,7 @@ Provider the config properties
 
 #### cz-portal-security
 
-Authorization with spring security with oauth2 and jwt
+Authorization by spring security with oauth2 and jwt
 #### cz-portal-service-user
 
 Provider user service

@@ -18,8 +18,7 @@ druid:
 #mybatis-plus
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
-  typeAliasesPackage: com.cz.domain
-  type-handlers-package: com.cz.core.typeHandler
+  typeAliasesPackage: com.cz.user.domain
   global-config:
     id-type: 3
     field-strategy: 2

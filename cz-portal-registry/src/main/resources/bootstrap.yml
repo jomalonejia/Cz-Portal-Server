@@ -1,5 +1,8 @@
 spring:
   application:
     name: cz-portal-registry
+  output:
+    ansi:
+      enabled: always
 server:
   port: 8761

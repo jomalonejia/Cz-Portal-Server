@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cz.security.mapper.CzUserDetailMapper">
+
+    <resultMap id="securityUser" type="com.cz.security.domain.SecurityUser">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+        <collection property="authorities" column="authorities" javaType="ArrayList"
+                    ofType="com.cz.security.domain.SecurityAuthority">
+            <id property="id" column="authority_id"></id>
+            <result property="userId" column="user_id"></result>
+            <result property="authority" column="authority"></result>
+        </collection>
+    </resultMap>
+
+    <select id="loadUserByUsername" resultMap="securityUser">
+        SELECT
+          front_user.id,
+          front_user.username,
+          front_user.password,
+          front_authority.id authority_id,
+          front_authority.user_id,
+          front_authority.authority
+        FROM
+          front_user front_user
+        LEFT JOIN
+          front_authority front_authority
+        ON front_user.id = front_authority.user_id
+        WHERE front_user.username = #{username}
+    </select>
+
+</mapper>

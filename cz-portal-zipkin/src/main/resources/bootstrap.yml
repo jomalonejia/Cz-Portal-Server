@@ -1,5 +1,8 @@
 spring:
   application:
     name: cz-portal-zipkin
+  output:
+      ansi:
+        enabled: always
 erver:
   port: 8767

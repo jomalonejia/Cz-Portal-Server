@@ -1,5 +1,8 @@
 spring:
   application:
     name: cz-portal-gateway
+  output:
+      ansi:
+        enabled: always
 server:
   port: 8765

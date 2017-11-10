@@ -1,6 +1,9 @@
 spring:
   application:
     name: cz-portal-security
+  output:
+      ansi:
+        enabled: always
 server:
   port: 9100
 eureka:

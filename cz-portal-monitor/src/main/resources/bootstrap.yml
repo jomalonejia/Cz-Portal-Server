@@ -1,5 +1,8 @@
 spring:
   application:
     name: cz-portal-monitor
+  output:
+      ansi:
+        enabled: always
 server:
   port: 8766

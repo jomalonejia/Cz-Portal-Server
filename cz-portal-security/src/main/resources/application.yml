@@ -25,7 +25,7 @@ security:
 #mybatis-plus
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
-  typeAliasesPackage: com.cz.domain
+  typeAliasesPackage: com.cz.security.domain
   type-handlers-package: com.cz.core.typeHandler
   global-config:
     id-type: 3
