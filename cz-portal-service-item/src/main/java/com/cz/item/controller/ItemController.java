@@ -1,10 +1,11 @@
-package com.cz.itemcontroller;
+package com.cz.item.controller;
 
 import com.cz.item.domain.Item;
 import com.cz.item.service.ItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -31,8 +32,15 @@ public class ItemController {
         return itemService.listHotItems();
     }
 
+    @GetMapping("/test")
+    @PreAuthorize("isAuthenticated()")
+    public Object test(){
+        return "test";
+    }
+
     @PostMapping("/addToCart")
+    @PreAuthorize("isAuthenticated()")
     public Object addToCart(){
-        return null;
+        return "success";
     }
 }

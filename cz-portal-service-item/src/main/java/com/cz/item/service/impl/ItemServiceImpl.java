@@ -1,9 +1,9 @@
-package com.cz.service.impl;
+package com.cz.item.service.impl;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.cz.domain.Item;
-import com.cz.mapper.ItemMapper;
-import com.cz.service.ItemService;
+import com.cz.item.domain.Item;
+import com.cz.item.mapper.ItemMapper;
+import com.cz.item.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

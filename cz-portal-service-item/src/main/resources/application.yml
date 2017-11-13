@@ -7,6 +7,14 @@ spring:
     username: root
     password: 123456
 
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:9100/oauth/token
+      user-authorization-uri: http://localhost:9100/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:9100/user
+
 druid:
   pool:
     initialSize: 10
@@ -27,4 +35,3 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
-

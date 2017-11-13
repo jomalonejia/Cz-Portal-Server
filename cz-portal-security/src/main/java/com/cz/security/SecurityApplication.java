@@ -26,26 +26,6 @@ public class SecurityApplication {
         SpringApplication.run(SecurityApplication.class, args);
     }
 
-    @GetMapping("/product/{id}")
-    public String getProduct(@PathVariable String id, @RequestHeader("header-test") String header) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        _log.info("++++++++++++++++");
-        _log.info(header);
-        return header;
-    }
-
-    @GetMapping("/order/{id}")
-    public String getOrder(@PathVariable String id) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return "order id : " + id;
-    }
-
-    @GetMapping("/test")
-    public String test() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return "test";
-    }
-
     @RequestMapping("/user")
     public Principal user(Principal user) {
         return user;

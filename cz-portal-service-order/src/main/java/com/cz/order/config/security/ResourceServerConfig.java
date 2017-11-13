@@ -1,4 +1,4 @@
-package com.cz.user.config.security;
+package com.cz.order.config.security;
 
 import com.cz.common.constants.SecurityConstant;
 import org.springframework.context.annotation.Bean;

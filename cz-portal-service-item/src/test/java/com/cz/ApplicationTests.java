@@ -1,9 +1,9 @@
 package com.cz;
 
-import com.cz.domain.Category;
-import com.cz.domain.Item;
-import com.cz.service.CategoryService;
-import com.cz.service.ItemService;
+import com.cz.item.domain.Category;
+import com.cz.item.domain.Item;
+import com.cz.item.service.CategoryService;
+import com.cz.item.service.ItemService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

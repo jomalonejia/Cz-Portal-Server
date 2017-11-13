@@ -1,6 +1,8 @@
-package com.cz.security.config;
+package com.cz.security.config.security;
 
+import com.cz.security.service.CzUserDetailsService;
 import com.sun.tracing.ProbeName;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,12 +24,25 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class WebSecuriryConfig extends WebSecurityConfigurerAdapter{
 
 
+    @Bean
+    public UserDetailsService userDetailsService(){
+        return new CzUserDetailsService();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
+        /*auth.inMemoryAuthentication()
                 .withUser("admin").password("123456").authorities("ADMIN")
                 .and()
-                .withUser("user").password("123456").authorities("USER");
+                .withUser("user").password("123456").authorities("USER");*/
+        auth
+                .userDetailsService(userDetailsService())
+                .passwordEncoder(passwordEncoder());
     }
     @Bean
     @Override
@@ -37,14 +52,14 @@ public class WebSecuriryConfig extends WebSecurityConfigurerAdapter{
     }
 
 
-    /*@Override
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:off
         http
                 .requestMatchers().anyRequest()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/oauth*//*").permitAll();
+                .antMatchers("/oauth").permitAll();
         // @formatter:on
-    }*/
+    }
 }

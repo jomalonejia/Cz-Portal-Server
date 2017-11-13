@@ -1,4 +1,4 @@
-package com.cz.item.config.mybatis;
+package com.cz.security.config.mybatis;
 
 
 import com.baomidou.mybatisplus.enums.DBType;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * Created by jomalone_jia
  */
 @Configuration
-@MapperScan("com.cz.item.mapper*")
+@MapperScan("com.cz.security.mapper*")
 public class MybatisPlusConfig {
     /**
      * mybatis-plus分页插件<br>

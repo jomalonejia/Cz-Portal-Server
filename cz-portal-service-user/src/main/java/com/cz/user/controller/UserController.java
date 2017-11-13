@@ -21,17 +21,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/test")
-    @PreAuthorize("hasAuthority('USER')")
-    public Object test(){
-        return "test";
-    }
-
     @GetMapping("/test1")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('USER')")
     public Object test1(){
         return "test1";
     }
+
 
     @PostMapping("/register")
     public Object register(@RequestBody DtoUser dtoUser){

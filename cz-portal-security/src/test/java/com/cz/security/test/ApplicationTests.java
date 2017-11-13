@@ -1,5 +1,7 @@
 package com.cz.security.test;
 
+import com.cz.security.domain.SecurityUser;
+import com.cz.security.mapper.CzUserDetailMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,4 +15,12 @@ import java.util.List;
 @SpringBootTest(classes = com.cz.security.SecurityApplication.class)
 public class ApplicationTests {
 
+    @Autowired
+    private CzUserDetailMapper czUserDetailMapper;
+
+    @Test
+    public void test1(){
+        SecurityUser user = czUserDetailMapper.loadUserByUsername("user");
+        System.out.println(user.toString());
+    }
 }

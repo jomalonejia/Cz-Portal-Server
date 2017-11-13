@@ -7,6 +7,16 @@ spring:
     username: root
     password: 123456
 
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:9100/oauth/token
+      user-authorization-uri: http://localhost:9100/oauth/authorize
+      client-id: client_2
+      client-secret: 123456
+    resource:
+      user-info-uri: http://localhost:9100/user
+
 druid:
   pool:
     initialSize: 10

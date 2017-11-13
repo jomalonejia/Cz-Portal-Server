@@ -3,26 +3,26 @@
 <mapper namespace="com.cz.item.mapper.ItemMapper">
 
 
-    <resultMap id="item" type="com.cz.domain.Item">
+    <resultMap id="item" type="com.cz.item.domain.Item">
         <id property="id" column="item_id"/>
         <result property="name" column="name"/>
         <result property="price" column="price"/>
         <result property="image" column="image"/>
         <result property="describe" column="describe"/>
-        <association property="category" column="category" javaType="com.cz.domain.Category">
+        <association property="category" column="category" javaType="com.cz.item.domain.Category">
             <id property="id" column="category_id"/>
             <result property="parentId" column="parent_id"/>
             <result property="name" column="name"/>
         </association>
     </resultMap>
     
-    <resultMap id="itemDetail" type="com.cz.domain.Item">
+    <resultMap id="itemDetail" type="com.cz.item.domain.Item">
         <id property="id" column="item_id"/>
         <result property="name" column="name"/>
         <result property="price" column="price"/>
         <result property="image" column="image"/>
         <result property="describe" column="describe"/>
-        <association property="category" column="category" javaType="com.cz.domain.Category">
+        <association property="category" column="category" javaType="com.cz.item.domain.Category">
             <id property="id" column="category_id"/>
             <result property="parentId" column="parent_id"/>
             <result property="name" column="name"/>
@@ -30,11 +30,11 @@
         <collection property="shownImages" column="images" ofType="java.lang.String" javaType="ArrayList" >
             <result property="url" column="url"></result>
         </collection>
-        <collection property="params" column="params" ofType="com.cz.domain.Param" javaType="ArrayList">
+        <collection property="params" column="params" ofType="com.cz.item.domain.Param" javaType="ArrayList">
             <id property="id" column="param_id"></id>
             <result property="paramName" column="param_name"></result>
             <result property="paramDescribe" column="param_describe"></result>
-            <collection property="paramDetails" column="param_details" ofType="com.cz.domain.ParamDetail" javaType="ArrayList">
+            <collection property="paramDetails" column="param_details" ofType="com.cz.item.domain.ParamDetail" javaType="ArrayList">
                 <result property="paramValue" column="param_value"></result>
                 <result property="inventory" column="inventory"></result>
             </collection>
