@@ -1,5 +1,6 @@
 package com.cz.item.controller;
 
+import com.cz.item.domain.Cart;
 import com.cz.item.domain.Item;
 import com.cz.item.service.ItemService;
 import org.slf4j.Logger;
@@ -38,9 +39,5 @@ public class ItemController {
         return "test";
     }
 
-    @PostMapping("/addToCart")
-    @PreAuthorize("isAuthenticated()")
-    public Object addToCart(){
-        return "success";
-    }
+
 }
