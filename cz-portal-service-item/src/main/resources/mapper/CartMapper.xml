@@ -2,6 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cz.item.mapper.CartMapper">
 
+    <resultMap id="cart" type="com.cz.item.domain.Cart">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="count" column="count"></result>
+        <result property="itemId" column="item_id"></result>
+        <result property="image" column="image"></result>
+        <result property="price" column="price"></result>
+        <result property="discount" column="discount"></result>
+        <result property="itemName" column="item_name"></result>
+        <result property="itemDescribe" column="item_describe"></result>
+        <collection property="params" column="params" javaType="ArrayList" ofType="com.cz.item.domain.CartParam">
+            <result property="paramDescribe" column="param_describe"></result>
+            <result property="paramValue" column="param_value"></result>
+        </collection>
+    </resultMap>
+
+    <insert id="insertCartParam" parameterType="com.cz.item.domain.CartParam">
+        INSERT INTO
+            sys_cart_param(cart_id,param_id,param_value)
+        VALUES
+            (#{cartId},#{paramId},#{paramValue})
+    </insert>
 
 
+    <select id="getCartByUsername" resultMap="cart">
+        SELECT
+            item.image,
+            item.price,
+            item.discount,
+            item.name item_name,
+            item.describe item_describe,
+            cart.id,
+            cart.count,
+            cart.username,
+            cart.item_id,
+            cart_param.param_value,
+            param.param_describe
+        FROM
+            sys_cart cart
+        LEFT JOIN
+            sys_cart_param cart_param
+        ON
+            cart.id = cart_param.cart_id
+        LEFT JOIN
+            sys_param param
+        ON
+            cart_param.param_id = param.id
+        LEFT JOIN
+            sys_item item
+        ON
+            cart.item_id = item.id
+        WHERE
+            cart.username = #{username}
+    </select>
 </mapper>

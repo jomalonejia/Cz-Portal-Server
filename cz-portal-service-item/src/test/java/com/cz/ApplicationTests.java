@@ -1,7 +1,9 @@
 package com.cz;
 
+import com.cz.item.domain.Cart;
 import com.cz.item.domain.Category;
 import com.cz.item.domain.Item;
+import com.cz.item.mapper.CartMapper;
 import com.cz.item.service.CategoryService;
 import com.cz.item.service.ItemService;
 import org.junit.Test;
@@ -14,10 +16,11 @@ import java.util.List;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest()
+@SpringBootTest(classes = com.cz.item.ItemApplication.class)
 public class ApplicationTests {
 
-
+   @Autowired
+   private CartMapper cartMapper;
    @Autowired
    private ItemService itemService;
    @Autowired
@@ -39,6 +42,12 @@ public class ApplicationTests {
     public void test3(){
         Item itemDetail = itemService.getItemDetail("60e054fdd0c74824bbbac46bf7d08603");
         System.out.println(itemDetail.toString());
+    }
+
+    @Test
+    public void test4(){
+        List<Cart> user = cartMapper.getCartByUsername("user");
+        System.out.println(user.toString());
     }
 
 }

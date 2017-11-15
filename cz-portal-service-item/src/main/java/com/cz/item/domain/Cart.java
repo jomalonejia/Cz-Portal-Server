@@ -21,18 +21,21 @@ public class Cart extends BaseModel<Cart>{
     private Integer count;
     @TableField("item_id")
     private String itemId;
-    @TableField("param_id")
-    private String paramId;
-    @TableField("param_Value")
+    @TableField(exist = false)
+    private String paramDescribe;
+    @TableField(exist = false)
     private String paramValue;
     @TableField(exist = false)
     private List<CartParam> params;
+    @TableField(exist = false)
+    private String image;
+    @TableField(exist = false)
+    private Integer price;
+    @TableField(exist = false)
+    private Float discount;
+    @TableField(exist = false)
+    private String itemName;
+    @TableField(exist = false)
+    private String itemDescribe;
 
-    public Cart(String username, Integer count, String itemId, String paramId, String paramValue) {
-        this.username = username;
-        this.count = count;
-        this.itemId = itemId;
-        this.paramId = paramId;
-        this.paramValue = paramValue;
-    }
 }

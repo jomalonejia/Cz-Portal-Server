@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by jomalone_jia on 2017/11/14.
  */
@@ -25,8 +27,16 @@ public class CartServiceImpl extends ServiceImpl<CartMapper,Cart> implements Car
 
     @Transactional
     public void insertCart(Cart cart){
-        for (CartParam cartParam : cart.getParams()) {
-            cartMapper.insert(new Cart(cart.getUsername(),cart.getCount(),cart.getItemId(),cartParam.getParamId(),cartParam.getParamValue()));
-        }
+        cartMapper.insert(cart);
+        cart.getParams()
+                .forEach(cartParam ->
+                        cartMapper.insertCartParam(new CartParam(cart.getId(),cartParam.getParamId(),cartParam.getParamValue())));
     }
+
+    @Override
+    public List<Cart> getCartByUsername(String username) {
+        return cartMapper.getCartByUsername(username);
+    }
+
+
 }

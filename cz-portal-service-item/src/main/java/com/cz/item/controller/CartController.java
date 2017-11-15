@@ -9,10 +9,7 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by jomalone_jia on 2017/11/14.
@@ -37,4 +34,17 @@ public class CartController {
         }
         return ResponseEntity.badRequest().build();
     }
+
+    @GetMapping("/get/{username}")
+    @PreAuthorize("isAuthenticated()")
+    public Object getCartByUsername(@PathVariable String username){
+        try {
+            return cartService.getCartByUsername(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+
 }
