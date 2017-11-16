@@ -38,5 +38,10 @@ public class CartServiceImpl extends ServiceImpl<CartMapper,Cart> implements Car
         return cartMapper.getCartByUsername(username);
     }
 
+    @Override
+    public void deleteCart(String cartId) {
+        cartMapper.deleteCart(cartId);
+    }
+
 
 }

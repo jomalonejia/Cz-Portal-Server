@@ -39,21 +39,21 @@
             cart.item_id,
             cart_param.param_value,
             param.param_describe
-        FROM
-            sys_cart cart
-        LEFT JOIN
-            sys_cart_param cart_param
-        ON
-            cart.id = cart_param.cart_id
-        LEFT JOIN
-            sys_param param
-        ON
-            cart_param.param_id = param.id
-        LEFT JOIN
-            sys_item item
-        ON
-            cart.item_id = item.id
-        WHERE
-            cart.username = #{username}
+        FROM sys_cart cart
+        LEFT JOIN sys_cart_param cart_param
+        ON cart.id = cart_param.cart_id
+        LEFT JOIN sys_param param
+        ON cart_param.param_id = param.id
+        LEFT JOIN sys_item item
+        ON cart.item_id = item.id
+        WHERE cart.username = #{username}
     </select>
+
+    <delete id="deleteCart">
+        DELETE cart,cart_param
+        FROM sys_cart cart
+        JOIN sys_cart_param cart_param
+        ON cart.id = cart_param.CART_ID
+        WHERE cart.id = #{cartId}
+    </delete>
 </mapper>

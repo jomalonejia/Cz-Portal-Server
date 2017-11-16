@@ -12,4 +12,5 @@ import java.util.List;
 public interface CartMapper extends BaseMapper<Cart> {
     List<Cart> getCartByUsername(String username);
     void insertCartParam(CartParam cartParam);
+    void deleteCart(String cartId);
 }

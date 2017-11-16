@@ -50,4 +50,9 @@ public class ApplicationTests {
         System.out.println(user.toString());
     }
 
+    @Test
+    public void test5(){
+        cartMapper.deleteCart("be7b6ada57124cc28abad84160f91bae");
+    }
+
 }

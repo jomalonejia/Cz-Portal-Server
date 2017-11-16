@@ -5,6 +5,7 @@ import com.cz.item.service.CartService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -46,5 +47,17 @@ public class CartController {
         return ResponseEntity.badRequest().build();
     }
 
+    @DeleteMapping("/delete/{cartId}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> deleteCartById(@PathVariable String cartId){
+        try {
+            _log.info("++++++++++++++++++++++++++"+cartId);
+            cartService.deleteCart(cartId);
+            return ResponseEntity.ok(cartId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.badRequest().build();
+    }
 
 }
