@@ -35,22 +35,18 @@ The fault tolerance library by histrix
 > pre
 -   (updating)
 > run
--   docker compose (updating)
-
-###default account  
+-   easiest server running flow:&nbsp;&nbsp;&nbsp;registry-->security-->service-xxx-->gateway
+-   
+> docker run
+-   (updating)
+### default account  
+-   admin:123456
+-   user:123456
     `
     `
 ## Running the tests
     `
     `
-
-
-## Built With
-
-* [Spring](http://www.spring.io/) - The framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* ...
-
 
 ## Authors
 

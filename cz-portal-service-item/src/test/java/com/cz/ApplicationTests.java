@@ -55,4 +55,14 @@ public class ApplicationTests {
         cartMapper.deleteCart("be7b6ada57124cc28abad84160f91bae");
     }
 
+    @Test
+    public void test6(){
+        Item item = itemService.getItemDetail("ffc1044c2f2a4f29a37a57eac72817d7");
+        System.out.println(item.getShownImages());
+    }
+
+    @Test
+    public void test7(){
+        cartMapper.deleteCartAll("user");
+    }
 }

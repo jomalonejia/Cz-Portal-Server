@@ -56,4 +56,13 @@
         ON cart.id = cart_param.CART_ID
         WHERE cart.id = #{cartId}
     </delete>
+
+    <delete id="deleteCartAll">
+         DELETE cart,cart_param
+        FROM sys_cart cart
+        JOIN sys_cart_param cart_param
+        ON cart.id = cart_param.CART_ID
+        WHERE cart.username = #{username}
+    </delete>
+
 </mapper>

@@ -60,7 +60,7 @@
     </select>
     
     <select id="getItemDetail" resultMap="itemDetail">
-        SELECT
+        SELECT DISTINCT
             item.id as item_id,
             item.name,
             item.price,
@@ -75,16 +75,17 @@
             param.param_describe param_describe,
             item_param.param_value param_value,
             item_param.inventory inventory
-        FROM
-            sys_item item
+        FROM sys_item_images images
+        LEFT JOIN sys_item item
+          ON item.id = images.item_id
         LEFT JOIN sys_category category
           ON item.category_id = category.id
-        LEFT JOIN sys_item_images images
-          ON item.id = images.item_id
         LEFT JOIN sys_item_param item_param
           ON item_param.item_id = item.id
         LEFT JOIN sys_param param
           ON param.id = item_param.param_id
-        WHERE item.id = #{itemId}
+        WHERE images.url != ''
+        AND item.id = #{itemId}
+        ORDER BY item_param.param_value
     </select>
 </mapper>

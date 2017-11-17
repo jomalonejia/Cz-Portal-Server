@@ -39,8 +39,13 @@ public class CartServiceImpl extends ServiceImpl<CartMapper,Cart> implements Car
     }
 
     @Override
-    public void deleteCart(String cartId) {
-        cartMapper.deleteCart(cartId);
+    public int deleteCart(String cartId) {
+       return cartMapper.deleteCart(cartId);
+    }
+
+    @Override
+    public void deleteCartAll(List<String> cartIds) {
+        cartIds.forEach(cartId -> deleteCart(cartId));
     }
 
 

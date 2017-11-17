@@ -11,5 +11,6 @@ import java.util.List;
 public interface CartService extends IService<Cart> {
     void insertCart(Cart cart);
     List<Cart> getCartByUsername(String username);
-    void deleteCart(String cartId);
+    int deleteCart(String cartId);
+    void deleteCartAll(List<String> cartIds);
 }

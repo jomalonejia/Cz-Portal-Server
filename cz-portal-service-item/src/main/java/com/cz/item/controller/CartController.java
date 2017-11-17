@@ -12,6 +12,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by jomalone_jia on 2017/11/14.
  */
@@ -51,9 +53,20 @@ public class CartController {
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<?> deleteCartById(@PathVariable String cartId){
         try {
-            _log.info("++++++++++++++++++++++++++"+cartId);
-            cartService.deleteCart(cartId);
-            return ResponseEntity.ok(cartId);
+            int flag = cartService.deleteCart(cartId);
+            return flag > 0 ? ResponseEntity.ok(cartId): ResponseEntity.badRequest().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @DeleteMapping("/deleteAll/{cartIds}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> deleteCartAll(@PathVariable List<String> cartIds){
+        try {
+            cartService.deleteCartAll(cartIds);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
             e.printStackTrace();
         }
