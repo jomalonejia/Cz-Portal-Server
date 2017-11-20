@@ -20,6 +20,7 @@ public class Item extends BaseModel<Item>{
     @TableField(value = "category_id")
     private Long categoryId;
     private Integer price;
+    private Integer postFee;
     private String image;
     @TableField(exist = false)
     private Category category;

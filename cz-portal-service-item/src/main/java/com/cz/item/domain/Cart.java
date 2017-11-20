@@ -32,6 +32,8 @@ public class Cart extends BaseModel<Cart>{
     @TableField(exist = false)
     private Integer price;
     @TableField(exist = false)
+    private Integer postFee;
+    @TableField(exist = false)
     private Float discount;
     @TableField(exist = false)
     private String itemName;

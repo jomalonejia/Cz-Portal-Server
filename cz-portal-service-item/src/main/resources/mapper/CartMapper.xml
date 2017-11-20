@@ -9,6 +9,7 @@
         <result property="itemId" column="item_id"></result>
         <result property="image" column="image"></result>
         <result property="price" column="price"></result>
+        <result property="postFee" column="post_fee"></result>
         <result property="discount" column="discount"></result>
         <result property="itemName" column="item_name"></result>
         <result property="itemDescribe" column="item_describe"></result>
@@ -36,6 +37,7 @@
             cart.id,
             cart.count,
             cart.username,
+            cart.post_fee,
             cart.item_id,
             cart_param.param_value,
             param.param_describe

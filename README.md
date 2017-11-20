@@ -33,7 +33,9 @@ The fault tolerance library by histrix
 
 ## Deployment
 > pre
--   (updating)
+-   > pre
+    -   load the sql file in you mysql(the backend server([Cz-Admin-Server](https://github.com/jomalonejia/Cz-Admin-Server)) and front server([Cz-Portal-Server](https://github.com/jomalonejia/Cz-Portal-Server)) share the same sql)
+-   ...
 > run
 -   easiest server running flow:&nbsp;&nbsp;&nbsp;registry-->security-->service-xxx-->gateway
 -   
