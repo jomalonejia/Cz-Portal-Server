@@ -18,7 +18,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class Cart extends BaseModel<Cart>{
     private String username;
-    private Integer count;
+    private Float count;
     @TableField("item_id")
     private String itemId;
     @TableField(exist = false)
@@ -30,14 +30,15 @@ public class Cart extends BaseModel<Cart>{
     @TableField(exist = false)
     private String image;
     @TableField(exist = false)
-    private Integer price;
+    private Float price;
     @TableField(exist = false)
-    private Integer postFee;
+    private Float postFee;
     @TableField(exist = false)
     private Float discount;
     @TableField(exist = false)
     private String itemName;
     @TableField(exist = false)
     private String itemDescribe;
-
+    @TableField(exist = false)
+    private String addressId;
 }
