@@ -10,5 +10,4 @@ import java.util.List;
  * Created by jomalone_jia on 2017/9/15.
  */
 public interface OrderMapper extends BaseMapper<Order> {
-    void addOrders(List<Order> orders);
 }

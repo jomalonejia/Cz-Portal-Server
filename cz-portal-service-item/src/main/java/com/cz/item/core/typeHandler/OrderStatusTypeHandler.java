@@ -1,6 +1,6 @@
 package com.cz.item.core.typeHandler;
 
-import com.cz.item.core.status.OrderStatus;
+import com.cz.item.core.enums.OrderStatus;
 import org.apache.ibatis.type.EnumOrdinalTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedJdbcTypes;

@@ -2,12 +2,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cz.item.mapper.OrderMapper">
 
-    <insert id="addOrders" parameterType="java.util.List">
-        INSERT INTO
-          sys_order
-        <foreach collection="orders">
-
-        </foreach>
-    </insert>
 
 </mapper>

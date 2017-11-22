@@ -20,6 +20,7 @@
         <id property="id" column="item_id"/>
         <result property="name" column="name"/>
         <result property="price" column="price"/>
+        <result property="postFee" column="post_fee"/>
         <result property="image" column="image"/>
         <result property="describe" column="describe"/>
         <association property="category" column="category" javaType="com.cz.item.domain.Category">
@@ -64,6 +65,7 @@
             item.id as item_id,
             item.name,
             item.price,
+            item.post_fee,
             item.image,
             item.describe,
             category.id as category_id,

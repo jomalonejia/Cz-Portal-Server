@@ -26,6 +26,7 @@ druid:
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
   typeAliasesPackage: com.cz.item.domain
+  type-handlers-package: com.cz.item.core.typeHandler
   global-config:
     id-type: 3
     field-strategy: 2
@@ -35,3 +36,4 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+

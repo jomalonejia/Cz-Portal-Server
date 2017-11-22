@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface OrderService extends IService<Order> {
     void addOrder(List<Cart> carts);
+    List<Order> listOrders(String username);
 }

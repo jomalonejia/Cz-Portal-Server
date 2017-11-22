@@ -3,13 +3,12 @@ package com.cz.item.domain;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.cz.common.base.BaseModel;
-import com.cz.item.core.status.OrderStatus;
+import com.cz.item.core.enums.OrderStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by jomalone_jia on 2017/9/15.
@@ -19,6 +18,8 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Order extends BaseModel<Order> {
+    @TableField("order_number")
+    private String orderNumber;
     private String username;
     private String image;
     @TableField("item_id")
@@ -34,7 +35,7 @@ public class Order extends BaseModel<Order> {
     private Float postFee;
     private Float price;
     private Float discount;
-    private Float count;
+    private Integer count;
     @TableField("total_price")
     private Float totalPrice;
     @TableField("create_time")
@@ -57,6 +58,7 @@ public class Order extends BaseModel<Order> {
     private String orderMessage;
 
     public Order(
+            String orderNumber,
             String username,
             String image,
             String itemId,
@@ -66,10 +68,11 @@ public class Order extends BaseModel<Order> {
             Float postFee,
             Float price,
             Float discount,
-            Float count,
+            Integer count,
             Float totalPrice,
             Date createTime,
             String orderMessage) {
+        this.orderNumber = orderNumber;
         this.username = username;
         this.image = image;
         this.itemId = itemId;
