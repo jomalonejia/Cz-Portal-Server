@@ -19,15 +19,14 @@ public class OrderFactory {
                         cart.getImage(),
                         cart.getItemId(),
                         cart.getItemName(),
-                        cart.getAddressId(),
+                        cart.getAddress(),
                         OrderStatus.AWAITING_EXCHANGE,
                         cart.getPostFee(),
                         cart.getPrice(),
                         cart.getDiscount(),
                         cart.getCount(),
                         cart.getPostFee() + cart.getPrice() * cart.getDiscount() * cart.getCount(),
-                        new Date(),
-                        null
+                        cart.getMessage()
                 )));
         return orders;
     }

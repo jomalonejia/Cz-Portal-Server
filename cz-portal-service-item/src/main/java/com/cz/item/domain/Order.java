@@ -3,12 +3,14 @@ package com.cz.item.domain;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.cz.common.base.BaseModel;
+import com.cz.common.base.SuperModel;
 import com.cz.item.core.enums.OrderStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by jomalone_jia on 2017/9/15.
@@ -17,7 +19,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Order extends BaseModel<Order> {
+public class Order extends SuperModel<Order> {
     @TableField("order_number")
     private String orderNumber;
     private String username;
@@ -26,10 +28,7 @@ public class Order extends BaseModel<Order> {
     private String itemId;
     @TableField("item_name")
     private String itemName;
-    @TableField(exist = false)
     private String address;
-    @TableField("address_id")
-    private String addressId;
     private OrderStatus status;
     @TableField("post_fee")
     private Float postFee;
@@ -38,24 +37,14 @@ public class Order extends BaseModel<Order> {
     private Integer count;
     @TableField("total_price")
     private Float totalPrice;
-    @TableField("create_time")
-    private Date createTime;
-    @TableField("update_time")
-    private Date updateTime;
-    @TableField("payment_time")
-    private Date paymentTime;
-    @TableField("consign_time")
-    private Date consignTime;
-    @TableField("end_time")
-    private Date endTime;
-    @TableField("close_time")
-    private Date closeTime;
     @TableField("shipping_name")
     private String shippingName;
     @TableField("shipping_number")
     private String shippingNumber;
     @TableField("order_message")
     private String orderMessage;
+    @TableField(exist = false)
+    private List<OrderTrack> orderTracks;
 
     public Order(
             String orderNumber,
@@ -63,28 +52,26 @@ public class Order extends BaseModel<Order> {
             String image,
             String itemId,
             String itemName,
-            String addressId,
+            String address,
             OrderStatus status,
             Float postFee,
             Float price,
             Float discount,
             Integer count,
             Float totalPrice,
-            Date createTime,
             String orderMessage) {
         this.orderNumber = orderNumber;
         this.username = username;
         this.image = image;
         this.itemId = itemId;
         this.itemName = itemName;
-        this.addressId = addressId;
+        this.address = address;
         this.status = status;
         this.postFee = postFee;
         this.price = price;
         this.discount = discount;
         this.count = count;
         this.totalPrice = totalPrice;
-        this.createTime = createTime;
         this.orderMessage = orderMessage;
     }
 }

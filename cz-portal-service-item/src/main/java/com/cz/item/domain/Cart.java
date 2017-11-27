@@ -40,5 +40,7 @@ public class Cart extends BaseModel<Cart>{
     @TableField(exist = false)
     private String itemDescribe;
     @TableField(exist = false)
-    private String addressId;
+    private String address;
+    @TableField(exist = false)
+    private String message;
 }

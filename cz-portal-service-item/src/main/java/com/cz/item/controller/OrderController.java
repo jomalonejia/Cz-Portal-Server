@@ -37,10 +37,12 @@ public class OrderController {
     }
 
     @GetMapping("/get/{username}")
-    public ResponseEntity<?> get(@PathVariable String username){
+    public ResponseEntity<?> get(@PathVariable String username,
+                                 @RequestParam(value = "pageNum",defaultValue = "1") String pageNum,
+                                 @RequestParam(value = "pageSize",defaultValue = "10")String pageSize){
         try {
-            List<Order> orders = orderService.listOrders(username);
-            return ResponseEntity.ok(orders);
+            return ResponseEntity.ok(orderService.listOrders(username,Integer.parseInt(pageNum),Integer.parseInt(pageSize)));
+            //return ResponseEntity.ok(orders);
         } catch (Exception e) {
             e.printStackTrace();
         }

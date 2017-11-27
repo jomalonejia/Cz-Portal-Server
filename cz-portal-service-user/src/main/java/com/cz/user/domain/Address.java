@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 /**
  * Created by jomalone_jia on 2017/11/20.
  */
-@TableName("front_address")
+@TableName("sys_address")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
