@@ -10,6 +10,7 @@ import com.cz.item.mapper.CartMapper;
 import com.cz.item.mapper.OrderMapper;
 import com.cz.item.mapper.OrderTrackMapper;
 import com.cz.item.service.OrderService;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
@@ -46,9 +47,11 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
     }
 
     @Override
-    public PageInfo<Order> listOrders(String username, int pageNum, int pageSize) {
+    public Page<Order> listOrders(String username, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return new PageInfo<>(orderMapper.listOrders(username));
+        List<Order> orders = orderMapper.listOrders(username);
+        return (Page)orders;
     }
+
 
 }

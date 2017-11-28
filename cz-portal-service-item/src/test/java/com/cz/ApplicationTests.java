@@ -1,11 +1,18 @@
 package com.cz;
 
+import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.cz.item.domain.Cart;
 import com.cz.item.domain.Category;
 import com.cz.item.domain.Item;
+import com.cz.item.domain.Order;
 import com.cz.item.mapper.CartMapper;
+import com.cz.item.mapper.OrderMapper;
 import com.cz.item.service.CategoryService;
 import com.cz.item.service.ItemService;
+import com.cz.item.service.OrderService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +32,10 @@ public class ApplicationTests {
    private ItemService itemService;
    @Autowired
    private CategoryService categoryService;
+   @Autowired
+   private OrderService orderService;
+   @Autowired
+   private OrderMapper orderMapper;
 
     @Test
     public void test1() {
@@ -64,5 +75,14 @@ public class ApplicationTests {
     @Test
     public void test7(){
         cartMapper.deleteCartAll("user");
+    }
+
+    @Test
+    public void test8(){
+        PageHelper.startPage(1,5);
+        List<Order> orders = orderMapper.listOrders("user");
+        System.out.println(orders);
+        orders.forEach(u -> System.out.println(u.toString()));
+        System.out.println(new PageInfo<Order>(orders));
     }
 }

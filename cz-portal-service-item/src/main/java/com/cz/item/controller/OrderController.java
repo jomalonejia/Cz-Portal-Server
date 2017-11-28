@@ -4,6 +4,7 @@ import com.cz.item.domain.Cart;
 import com.cz.item.domain.Order;
 import com.cz.item.service.CartService;
 import com.cz.item.service.OrderService;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +39,13 @@ public class OrderController {
 
     @GetMapping("/get/{username}")
     public ResponseEntity<?> get(@PathVariable String username,
-                                 @RequestParam(value = "pageNum",defaultValue = "1") String pageNum,
-                                 @RequestParam(value = "pageSize",defaultValue = "10")String pageSize){
+                                 @RequestParam(value = "pageNum") Integer pageNum,
+                                 @RequestParam(value = "pageSize")Integer pageSize){
         try {
-            return ResponseEntity.ok(orderService.listOrders(username,Integer.parseInt(pageNum),Integer.parseInt(pageSize)));
+            _log.info(username);
+            _log.info(pageNum+"");
+            _log.info(pageSize+"");
+            return ResponseEntity.ok(new PageInfo<>(orderService.listOrders(username,pageNum,pageSize)));
             //return ResponseEntity.ok(orders);
         } catch (Exception e) {
             e.printStackTrace();
