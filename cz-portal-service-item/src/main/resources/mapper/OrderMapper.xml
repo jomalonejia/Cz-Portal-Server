@@ -27,37 +27,43 @@
         <result property="shippingNumber" column="shipping_number"/>
         <result property="orderMessage" column="order_message"/>
         <collection property="orderTracks" column="orderTracks" ofType="com.cz.item.domain.OrderTrack" javaType="ArrayList">
-            <result property="trackInformation" column="track_information"></result>
-            <result property="trackTime" column="track_time"></result>
+            <id property="id" column="track_id"/>
+            <result property="orderId" column="track_order_id"/>
+            <result property="trackInformation" column="track_information"/>
+            <result property="trackTime" column="track_time"/>
+            <result property="status" column="track_status"/>
         </collection>
     </resultMap>
 
     <select id="listOrders" resultMap="order">
        SELECT
-        sys_order.id,
-        sys_order.order_number,
-        sys_order.username,
-        sys_order.image,
-        sys_order.item_id,
-        sys_order.item_name,
-        sys_order.address,
-        sys_order.status,
-        sys_order.post_fee,
-        sys_order.price,
-        sys_order.discount,
-        sys_order.`count`,
-        sys_order.total_price,
-        sys_order.create_time,
-        sys_order.update_time,
-        sys_order.payment_time,
-        sys_order.consign_time,
-        sys_order.end_time,
-        sys_order.close_time,
-        sys_order.shipping_name,
-        sys_order.shipping_number,
-        sys_order.order_message,
-        sys_order_track.track_information,
-        sys_order_track.track_time
+        sys_order.id as id,
+        sys_order.order_number as order_number,
+        sys_order.username as username,
+        sys_order.image as image,
+        sys_order.item_id as item_id,
+        sys_order.item_name as item_name,
+        sys_order.address as address,
+        sys_order.status as status,
+        sys_order.post_fee as post_fee,
+        sys_order.price as price,
+        sys_order.discount as discount,
+        sys_order.`count` as `count`,
+        sys_order.total_price as total_price,
+        sys_order.create_time as create_time,
+        sys_order.update_time as update_time,
+        sys_order.payment_time as payment_time,
+        sys_order.consign_time as consign_time,
+        sys_order.end_time as end_time,
+        sys_order.close_time as close_time,
+        sys_order.shipping_name as shipping_name,
+        sys_order.shipping_number as shipping_number,
+        sys_order.order_message as order_message,
+        sys_order_track.id as track_id,
+        sys_order_track.order_id as track_order_id,
+        sys_order_track.track_information as track_information,
+        sys_order_track.track_time as track_time,
+        sys_order_track.status as track_status
        FROM  sys_order sys_order
        LEFT JOIN sys_order_track sys_order_track
        ON sys_order.id = sys_order_track.order_id

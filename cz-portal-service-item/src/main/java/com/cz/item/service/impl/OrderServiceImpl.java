@@ -2,6 +2,7 @@ package com.cz.item.service.impl;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.cz.common.constants.OrderConstant;
+import com.cz.item.core.enums.OrderStatus;
 import com.cz.item.core.factory.OrderFactory;
 import com.cz.item.domain.Cart;
 import com.cz.item.domain.Order;
@@ -42,7 +43,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
         List<Order> orders = OrderFactory.createOrders(carts);
         orders.forEach(order -> {
             orderMapper.insert(order);
-            orderTrackMapper.insert(new OrderTrack(order.getId(), OrderConstant.AWAITING_EXCHANGE_TRACK_INFORMATION));
+           /* orderTrackMapper.insert(
+                    new OrderTrack(order.getId(),
+                            OrderConstant.AWAITING_EXCHANGE_TRACK_INFORMATION,
+                            OrderStatus.AWAITING_EXCHANGE));*/
         });
     }
 

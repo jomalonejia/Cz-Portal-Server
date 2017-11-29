@@ -2,10 +2,12 @@ package com.cz.item.controller;
 
 import com.cz.item.domain.Cart;
 import com.cz.item.domain.Item;
+import com.cz.item.service.CommentService;
 import com.cz.item.service.ItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,11 +22,12 @@ public class ItemController {
 
     @Autowired
     private ItemService itemService;
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/get/{itemId}")
     public Object test(@PathVariable("itemId") String itemId){
         Item itemDetail = itemService.getItemDetail(itemId);
-        _log.info(itemDetail.toString());
         return itemDetail;
     }
 
@@ -33,10 +36,17 @@ public class ItemController {
         return itemService.listHotItems();
     }
 
-    @GetMapping("/test")
-    @PreAuthorize("isAuthenticated()")
-    public Object test(){
-        return "test";
+    @GetMapping("/comment/{itemId}")
+    public ResponseEntity<?> getCommentByItemId(@PathVariable String itemId,
+                                     @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
+                                     @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize){
+
+        try {
+            return ResponseEntity.ok(commentService.listComments(itemId,pageNum,pageSize));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.badRequest().body("list comment failed");
     }
 
 

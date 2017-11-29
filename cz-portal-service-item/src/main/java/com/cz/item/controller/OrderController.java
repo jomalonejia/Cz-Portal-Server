@@ -4,11 +4,13 @@ import com.cz.item.domain.Cart;
 import com.cz.item.domain.Order;
 import com.cz.item.service.CartService;
 import com.cz.item.service.OrderService;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +29,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/add")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<?> add(@RequestBody List<Cart> carts){
         try {
             orderService.addOrder(carts);
@@ -38,15 +41,13 @@ public class OrderController {
     }
 
     @GetMapping("/get/{username}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<?> get(@PathVariable String username,
-                                 @RequestParam(value = "pageNum") Integer pageNum,
-                                 @RequestParam(value = "pageSize")Integer pageSize){
+                                 @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
+                                 @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize){
         try {
-            _log.info(username);
-            _log.info(pageNum+"");
-            _log.info(pageSize+"");
-            return ResponseEntity.ok(new PageInfo<>(orderService.listOrders(username,pageNum,pageSize)));
-            //return ResponseEntity.ok(orders);
+            Page<Order> orders = orderService.listOrders(username, pageNum, pageSize);
+            return ResponseEntity.ok(new PageInfo<>(orders));
         } catch (Exception e) {
             e.printStackTrace();
         }

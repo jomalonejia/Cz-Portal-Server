@@ -85,4 +85,10 @@ public class ApplicationTests {
         orders.forEach(u -> System.out.println(u.toString()));
         System.out.println(new PageInfo<Order>(orders));
     }
+
+    @Test
+    public void test9(){
+        Page<Order> user = orderService.listOrders("user", 1, 5);
+        user.forEach(u -> System.out.println(u.toString()));
+    }
 }

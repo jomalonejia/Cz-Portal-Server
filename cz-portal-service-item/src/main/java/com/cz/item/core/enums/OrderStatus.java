@@ -10,10 +10,11 @@ public enum OrderStatus {
     AWAITING_EXCHANGE(2),
     AWAITING_SHIPPING(3),
     SHIPPING(4),
-    DELIVERED(5),
-    AWAITING_RETURNING(6),
-    RETURNING(7),
-    RETURNED(8);
+    DELIVERING(5),
+    DELIVERED(6),
+    AWAITING_RETURNING(7),
+    RETURNING(8),
+    RETURNED(9);
 
     private final int status;
 
