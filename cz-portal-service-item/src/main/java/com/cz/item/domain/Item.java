@@ -29,4 +29,5 @@ public class Item extends BaseModel<Item>{
     @TableField(exist = false)
     private List<Param> params;
     private String describe;
+    private String content;
 }
