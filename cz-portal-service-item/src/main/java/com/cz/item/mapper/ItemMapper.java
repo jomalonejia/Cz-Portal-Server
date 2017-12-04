@@ -11,5 +11,6 @@ import java.util.List;
  */
 public interface ItemMapper extends BaseMapper<Item> {
     List<Item> listHotItems();
+
     Item getItemDetail(@Param("itemId") String itemId);
 }

@@ -2,6 +2,7 @@ package com.cz.item.controller;
 
 import com.cz.item.domain.Cart;
 import com.cz.item.domain.Item;
+import com.cz.item.domain.ItemComment;
 import com.cz.item.service.CommentService;
 import com.cz.item.service.ItemService;
 import org.slf4j.Logger;
@@ -43,6 +44,17 @@ public class ItemController {
 
         try {
             return ResponseEntity.ok(commentService.listComments(itemId,pageNum,pageSize));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.badRequest().body("list comment failed");
+    }
+
+    @PostMapping("/comment/add")
+    public ResponseEntity<?> addComment(@RequestBody ItemComment itemComment){
+        try {
+            _log.info(itemComment.toString());
+            return ResponseEntity.ok(commentService.addComment(itemComment));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -27,4 +27,5 @@ public class ItemServiceImpl extends ServiceImpl<ItemMapper,Item> implements Ite
     public Item getItemDetail(String itemId) {
         return itemMapper.getItemDetail(itemId);
     }
+
 }

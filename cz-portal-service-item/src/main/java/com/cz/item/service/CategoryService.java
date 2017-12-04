@@ -8,6 +8,4 @@ import com.cz.item.domain.Category;
  */
 public interface CategoryService extends IService<Category> {
 
-
-
 }

@@ -3,10 +3,20 @@
 <mapper namespace="com.cz.item.mapper.CommentMapper">
 
 
-    <select id="listCommentByItemId" resultType="com.cz.item.domain.Comment">
+    <select id="listCommentByItemId" resultType="com.cz.item.domain.ItemComment">
         SELECT
-          id,item_id,username,comment,comment_date,rating
-        FROM sys_comment
-        WHERE item_id = #{itemId}
+          sys_item_comment.id,
+          sys_item_comment.item_id,
+          sys_item_comment.username,
+          sys_item_comment.comment,
+          sys_item_comment.comment_date,
+          sys_item_comment.rating,
+          front_user.profile
+        FROM sys_item sys_item
+        left JOIN sys_item_comment sys_item_comment
+        ON sys_item.id = sys_item_comment.item_id
+        LEFT JOIN front_user front_user
+        ON front_user.USERNAME = sys_item_comment.username
+        WHERE sys_item.id = #{itemId}
     </select>
 </mapper>

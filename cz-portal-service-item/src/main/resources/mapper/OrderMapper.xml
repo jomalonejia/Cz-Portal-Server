@@ -35,6 +35,15 @@
         </collection>
     </resultMap>
 
+    <resultMap id="itemOrderInfo" type="com.cz.item.dto.ItemOrderInfo">
+         <result property="orderNumber" column="order_number"/>
+         <result property="username" column="username"/>
+         <result property="image" column="image"/>
+         <result property="itemId" column="item_id"/>
+         <result property="itemName" column="item_name"/>
+         <result property="totalPrice" column="total_price"/>
+    </resultMap>
+
     <select id="listOrders" resultMap="order">
        SELECT
         sys_order.id as id,
@@ -68,5 +77,18 @@
        LEFT JOIN sys_order_track sys_order_track
        ON sys_order.id = sys_order_track.order_id
        WHERE sys_order.username = #{username}
+    </select>
+
+
+    <select id="getItemOrderInfo" resultMap="itemOrderInfo">
+        SELECT
+         orderNumber,
+         username,
+         image,
+         itemId,
+         itemName,
+         totalPrice
+        FROM  sys_order
+        WHERE id = #{orderId}
     </select>
 </mapper>

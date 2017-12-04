@@ -10,5 +10,6 @@ import java.util.List;
  */
 public interface ItemService extends IService<Item> {
     List<Item> listHotItems();
+
     Item getItemDetail(String itemId);
 }

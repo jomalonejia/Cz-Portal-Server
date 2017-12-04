@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.cz.common.base.BaseModel;
 import com.cz.common.base.SuperModel;
 import com.cz.item.core.enums.OrderStatus;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

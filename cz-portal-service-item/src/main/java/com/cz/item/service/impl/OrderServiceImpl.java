@@ -7,6 +7,7 @@ import com.cz.item.core.factory.OrderFactory;
 import com.cz.item.domain.Cart;
 import com.cz.item.domain.Order;
 import com.cz.item.domain.OrderTrack;
+import com.cz.item.dto.ItemOrderInfo;
 import com.cz.item.mapper.CartMapper;
 import com.cz.item.mapper.OrderMapper;
 import com.cz.item.mapper.OrderTrackMapper;
@@ -57,5 +58,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
         return (Page)orders;
     }
 
+    @Override
+    public ItemOrderInfo getItemOrderInfo(String orderId) {
+        return orderMapper.getItemOrderInfo(orderId);
+    }
 
 }

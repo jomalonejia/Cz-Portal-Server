@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,6 +49,20 @@ public class OrderController {
         try {
             Page<Order> orders = orderService.listOrders(username, pageNum, pageSize);
             return ResponseEntity.ok(new PageInfo<>(orders));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.badRequest().body("list orders failed");
+    }
+
+    @GetMapping("/get/{username}/{itemId}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> getItemOrderInfo(@PathVariable("username") String username,
+                                              @PathVariable("itemId") String itemId){
+        try {
+            _log.info(username);
+            _log.info(itemId);
+            return ResponseEntity.ok("success");
         } catch (Exception e) {
             e.printStackTrace();
         }
