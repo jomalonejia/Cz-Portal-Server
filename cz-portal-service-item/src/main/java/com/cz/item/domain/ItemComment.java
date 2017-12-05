@@ -20,6 +20,8 @@ import java.util.Date;
 public class ItemComment extends BaseModel<ItemComment> {
     @TableField("item_id")
     private String itemId;
+    @TableField(exist = false)
+    private String orderId;
     private String username;
     private String comment;
     @TableField(value = "comment_date",fill = FieldFill.INSERT)

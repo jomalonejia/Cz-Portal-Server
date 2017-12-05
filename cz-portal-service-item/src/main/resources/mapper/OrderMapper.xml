@@ -36,6 +36,7 @@
     </resultMap>
 
     <resultMap id="itemOrderInfo" type="com.cz.item.dto.ItemOrderInfo">
+         <id property="id" column="id"/>
          <result property="orderNumber" column="order_number"/>
          <result property="username" column="username"/>
          <result property="image" column="image"/>
@@ -43,6 +44,10 @@
          <result property="itemName" column="item_name"/>
          <result property="totalPrice" column="total_price"/>
     </resultMap>
+
+    <update id="updateStatus">
+        update sys_order set status = #{orderStatus} WHERE  id = #{orderId}
+    </update>
 
     <select id="listOrders" resultMap="order">
        SELECT
@@ -82,12 +87,13 @@
 
     <select id="getItemOrderInfo" resultMap="itemOrderInfo">
         SELECT
-         orderNumber,
-         username,
-         image,
-         itemId,
-         itemName,
-         totalPrice
+          id,
+          order_Number,
+          username,
+          image,
+          item_id,
+          item_name,
+          total_price
         FROM  sys_order
         WHERE id = #{orderId}
     </select>

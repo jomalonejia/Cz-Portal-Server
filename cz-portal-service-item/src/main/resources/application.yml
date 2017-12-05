@@ -33,7 +33,7 @@ mybatis-plus:
     auto-set-db-type: true
     db-column-underline: true
     refresh-mapper: true
-    meta-object-handler: com.cz.item.core.handlers.metaObjectHandlers.OrderTrackMetaObjectHandler
+    meta-object-handler: com.cz.item.core.handlers.metaObjectHandlers.ItemMetaObjectHandler
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false

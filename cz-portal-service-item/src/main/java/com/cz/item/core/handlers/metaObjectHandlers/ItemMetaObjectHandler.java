@@ -6,13 +6,14 @@ import org.apache.ibatis.reflection.MetaObject;
 import java.util.Date;
 
 /**
- * Created by jomalone_jia on 2017/12/4.
+ * Created by jomalone_jia on 2017/11/27.
  */
-public class ItemContentMetaObjectHandler extends MetaObjectHandler {
+public class ItemMetaObjectHandler extends MetaObjectHandler{
     @Override
     public void insertFill(MetaObject metaObject) {
 
-        this.setFieldValByName("commentDate", new Date(), metaObject);
+        this.setFieldValByName("trackTime", new Date(), metaObject);
+        this.setFieldValByName("commentDate",new Date(), metaObject);
     }
 
     @Override

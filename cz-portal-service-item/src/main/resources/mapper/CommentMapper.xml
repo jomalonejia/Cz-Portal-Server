@@ -18,5 +18,6 @@
         LEFT JOIN front_user front_user
         ON front_user.USERNAME = sys_item_comment.username
         WHERE sys_item.id = #{itemId}
+        ORDER BY sys_item_comment.comment_date DESC
     </select>
 </mapper>

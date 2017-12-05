@@ -1,13 +1,12 @@
 package com.cz;
 
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
-import com.cz.item.domain.Cart;
-import com.cz.item.domain.Category;
-import com.cz.item.domain.Item;
-import com.cz.item.domain.Order;
+import com.cz.item.domain.*;
+import com.cz.item.dto.ItemOrderInfo;
 import com.cz.item.mapper.CartMapper;
 import com.cz.item.mapper.OrderMapper;
 import com.cz.item.service.CategoryService;
+import com.cz.item.service.CommentService;
 import com.cz.item.service.ItemService;
 import com.cz.item.service.OrderService;
 import com.github.pagehelper.Page;
@@ -36,6 +35,8 @@ public class ApplicationTests {
    private OrderService orderService;
    @Autowired
    private OrderMapper orderMapper;
+   @Autowired
+   private CommentService commentService;
 
     @Test
     public void test1() {
@@ -94,6 +95,14 @@ public class ApplicationTests {
 
     @Test
     public void test10(){
-        //orderService.getItemOrderInfo("user",)
+        ItemOrderInfo user = orderService.getItemOrderInfo("5e1c8f8a0e1540e09b85153bdaf36fb0");
+        System.out.println(user.toString());
+    }
+
+    @Test
+    public void test11(){
+        ItemComment itemComment = new ItemComment();
+        itemComment.setComment("aluba");
+        commentService.addComment(itemComment);
     }
 }

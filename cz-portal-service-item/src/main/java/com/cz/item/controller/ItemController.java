@@ -50,16 +50,4 @@ public class ItemController {
         return ResponseEntity.badRequest().body("list comment failed");
     }
 
-    @PostMapping("/comment/add")
-    public ResponseEntity<?> addComment(@RequestBody ItemComment itemComment){
-        try {
-            _log.info(itemComment.toString());
-            return ResponseEntity.ok(commentService.addComment(itemComment));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return ResponseEntity.badRequest().body("list comment failed");
-    }
-
-
 }

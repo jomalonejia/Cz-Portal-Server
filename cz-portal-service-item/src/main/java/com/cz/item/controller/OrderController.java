@@ -1,8 +1,10 @@
 package com.cz.item.controller;
 
 import com.cz.item.domain.Cart;
+import com.cz.item.domain.ItemComment;
 import com.cz.item.domain.Order;
 import com.cz.item.service.CartService;
+import com.cz.item.service.CommentService;
 import com.cz.item.service.OrderService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
@@ -28,6 +30,8 @@ public class OrderController {
     private CartService cartService;
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private CommentService commentService;
 
     @PostMapping("/add")
     @PreAuthorize("isAuthenticated()")
@@ -55,17 +59,23 @@ public class OrderController {
         return ResponseEntity.badRequest().body("list orders failed");
     }
 
-    @GetMapping("/get/{username}/{itemId}")
+    @GetMapping("/getItemOrderInfo/{orderId}")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> getItemOrderInfo(@PathVariable("username") String username,
-                                              @PathVariable("itemId") String itemId){
+    public ResponseEntity<?> getItemOrderInfo(@PathVariable("orderId") String orderId){
         try {
-            _log.info(username);
-            _log.info(itemId);
-            return ResponseEntity.ok("success");
+            return ResponseEntity.ok(orderService.getItemOrderInfo(orderId));
         } catch (Exception e) {
             e.printStackTrace();
         }
         return ResponseEntity.badRequest().body("list orders failed");
+    }
+    @PostMapping("/comment/add")
+    public ResponseEntity<?> addComment(@RequestBody ItemComment itemComment){
+        try {
+            return ResponseEntity.ok(commentService.addComment(itemComment));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.badRequest().body("list comment failed");
     }
 }
