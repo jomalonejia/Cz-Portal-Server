@@ -1,11 +1,8 @@
 eureka:
   instance:
-    hostname: localhost
-    prefer-ip-address: true
+    hostname: cz-portal-registry
   client:
     registerWithEureka: false
     fetchRegistry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
-spring.cloud.config.discovery.enabled: true

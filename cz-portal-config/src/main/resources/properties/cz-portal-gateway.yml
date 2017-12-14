@@ -1,0 +1,16 @@
+eureka:
+  instance:
+    appname: cz-portal-gateway
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://cz-portal-security:9100/oauth/token
+      user-authorization-uri: http://cz-portal-security:9100/oauth/authorize
+    resource:
+      user-info-uri: http://cz-portal-security:9100/user
+      prefer-token-info: false
+
+zuul:
+  sensitive-headers:
+  add-proxy-headers: true

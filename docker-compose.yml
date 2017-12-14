@@ -1,0 +1,60 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=cz
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+  cz-portal-registry:
+    build: ./cz-portal-registry
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prd
+  cz-portal-config:
+    build: ./cz-portal-config
+    ports:
+      - "8888:8888"
+    links:
+      - cz-portal-registry
+  cz-portal-gateway:
+    build: ./cz-portal-gateway
+    links:
+      - cz-portal-registry
+      - cz-portal-config
+      - cz-portal-security
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prd
+  cz-portal-security:
+    build: ./cz-portal-security
+    links:
+      - cz-portal-registry
+      - cz-portal-config
+    ports:
+      - "9100:9100"
+    environment:
+        - SPRING_PROFILES_ACTIVE=prd
+  cz-portal-service-user:
+    build: ./cz-portal-service-item
+    links:
+      - cz-portal-registry
+      - cz-portal-config
+      - cz-portal-security
+    ports:
+      - "9102:9102"
+  cz-portal-service-user:
+    build: ./cz-portal-service-user
+    links:
+      - cz-portal-registry
+      - cz-portal-config
+      - cz-portal-security
+    ports:
+      - "9103:9103"

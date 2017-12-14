@@ -1,0 +1,9 @@
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    registryFetchIntervalSeconds: 5
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+

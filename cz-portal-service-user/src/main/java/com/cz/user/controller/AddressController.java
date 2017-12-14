@@ -7,6 +7,7 @@ package com.cz.user.controller;
         import org.slf4j.LoggerFactory;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.http.ResponseEntity;
+        import org.springframework.security.access.prepost.PreAuthorize;
         import org.springframework.web.bind.annotation.*;
 
         import java.util.List;
@@ -24,7 +25,8 @@ public class AddressController {
     private AddressService addressService;
 
     @GetMapping("/get/{username}")
-    public Object add(@PathVariable String username){
+    @PreAuthorize("isAuthenticated()")
+    public Object get(@PathVariable String username){
         try {
 
             List<Address> results = addressService.selectList(new EntityWrapper<Address>().eq("username", username));
@@ -37,6 +39,7 @@ public class AddressController {
     }
 
     @PostMapping("/add")
+    @PreAuthorize("isAuthenticated()")
     public Object add(@RequestBody Address address){
         try {
             return addressService.insert(address);
@@ -47,6 +50,7 @@ public class AddressController {
     }
 
     @PostMapping("/update")
+    @PreAuthorize("isAuthenticated()")
     public Object update(@RequestBody Address address){
         try {
             return addressService.updateById(address);

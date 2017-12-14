@@ -1,12 +1,29 @@
+server:
+  port: 9102
+
 spring:
   application:
     name: cz-portal-service-item
-  output:
-      ansi:
-        enabled: always
-server:
-  port: 9102
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+
+---
+spring:
+  profiles: prd
+  cloud:
+    config:
+      uri: http://cz-portal-config:8888
+
+---
+spring:
+  profiles: notebook
+  cloud:
+    config:
+      uri: http://cz-portal-config:8888

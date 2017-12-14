@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.cz.common.constants.UserConstant;
 import com.cz.user.domain.User;
 import com.cz.user.dto.DtoUser;
+import com.cz.user.dto.UserInfo;
 import com.cz.user.mapper.UserMapper;
 import com.cz.user.service.UserService;
 import com.cz.user.utils.CastUtil;
@@ -28,5 +29,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
         user.setLastUpdateDate(new Date());
         user.setEnabled(true);
         userMapper.insert(user);
+    }
+
+    @Override
+    public UserInfo getUserInfo(String username) {
+        return userMapper.getUserInfo(username);
     }
 }

@@ -5,4 +5,4 @@ spring:
       ansi:
         enabled: always
 server:
-  port: 8766
+  port: 8762

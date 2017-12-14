@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -5,8 +6,14 @@ spring:
     url: jdbc:mysql://localhost:3306/cz?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123456
-  redis:
-    host: localhost
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://cz-portal-security:9100/oauth/token
+      user-authorization-uri: http://cz-portal-security:9100/oauth/authorize
+    resource:
+      user-info-uri: http://cz-portal-security:9100/user
 
 druid:
   pool:
@@ -14,19 +21,11 @@ druid:
     maxActive: 100
     minIdle: 10
 
-security:
-  oauth2:
-    resource:
-      filter-order: 3
-  user:
-    name: user
-    password: 123456
 
 #mybatis-plus
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
-  typeAliasesPackage: com.cz.security.domain
-  type-handlers-package: com.cz.core.typeHandler
+  typeAliasesPackage: com.cz.user.domain
   global-config:
     id-type: 3
     field-strategy: 2
@@ -37,5 +36,6 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
 
-logging.level.org.springframework.security: DEBUG
 
+
+logging.level.org.springframework.security: DEBUG

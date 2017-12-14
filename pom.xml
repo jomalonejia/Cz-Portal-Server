@@ -20,7 +20,6 @@
     <modules>
         <module>cz-portal-registry</module>
         <module>cz-portal-config</module>
-        <module>config-client</module>
         <module>cz-portal-gateway</module>
         <module>cz-portal-zipkin</module>
         <module>cz-portal-monitor</module>

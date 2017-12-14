@@ -1,5 +1,22 @@
 spring:
   application:
     name: cz-portal-config
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+#        git:
+#          uri: https://github.com/jomalonejia/CzPortal-Server
+#          search-paths: config-repositories
+        native:
+          search-locations: classpath:/properties
 server:
-  port: 8762
+  port: 8888
+
+eureka:
+  instance:
+    appname: cz-portal-config
+  client:
+    service-url:
+      defaultZone: http://${REGISTRY_HOST:cz-portal-registry}:8761/eureka/

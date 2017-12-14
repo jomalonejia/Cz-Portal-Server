@@ -8,17 +8,13 @@ Services Introduce
 
 - `cz-portal-registry`:The service-registry-center by eureka
 
-- `cz-portal-gateway`:
+- `cz-portal-gateway`:Load balance and authorization by zuul
 
-Load balance and authorization by zuul
-
-- `cz-portal-monitor`:
-
-The fault tolerance library by histrix
+- `cz-portal-monitor`:The fault tolerance library by histrix
 
 - `cz-portal-zipkin`:Tracing services with zipkin
 
-- `cz-portal-config`:Provider the config properties
+- `cz-portal-config`:Control control the config properties
 
 - `cz-portal-security`:Authorization by spring security with oauth2 and jwt
 
@@ -33,16 +29,20 @@ The fault tolerance library by histrix
 
 ## Deployment
 > pre
--   > pre
-    -   load the sql file in you mysql(the backend server([Cz-Admin-Server](https://github.com/jomalonejia/Cz-Admin-Server)) and front server([Cz-Portal-Server](https://github.com/jomalonejia/Cz-Portal-Server)) share the same sql)
+-   load the sql file in you mysql(the backend server([Cz-Admin-Server](https://github.com/jomalonejia/Cz-Admin-Server)) and front server([Cz-Portal-Server](https://github.com/jomalonejia/Cz-Portal-Server)) share the same sql)
 -   ...
-> run
--   easiest server running flow:&nbsp;&nbsp;&nbsp;registry-->security-->service-xxx-->gateway
+> localhost run
+-   easiest server running flow:&nbsp;&nbsp;&nbsp;registry-->config-->security-->service-xxx-->gateway
 -   
 > docker run
--   (updating)
+-   cd Cz-Portal-Server
+-   docker-compose build (build images)
+-   docker-compose up -d cz-portal-registry (run registry service)
+-   docker-compose up -d cz-portal-config (run config service)
+-   docker-compose up -d (run other services)
+-   docker-compose logs (print logs)
 ### default account  
--   admin:123456
+-   admin:123456</br>
 -   user:123456
     `
     `

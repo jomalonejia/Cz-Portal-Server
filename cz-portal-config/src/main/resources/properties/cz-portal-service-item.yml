@@ -1,4 +1,3 @@
-
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -10,10 +9,10 @@ spring:
 security:
   oauth2:
     client:
-      access-token-uri: http://localhost:9100/oauth/token
-      user-authorization-uri: http://localhost:9100/oauth/authorize
+      access-token-uri: http://security:9100/oauth/token
+      user-authorization-uri: http://security:9100/oauth/authorize
     resource:
-      user-info-uri: http://localhost:9100/user
+      user-info-uri: http://security:9100/user
 
 druid:
   pool:
@@ -25,15 +24,15 @@ druid:
 #mybatis-plus
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
-  typeAliasesPackage: com.cz.user.domain
+  typeAliasesPackage: com.cz.item.domain
+  type-handlers-package: com.cz.item.core.handlers.typeHandlers
   global-config:
     id-type: 3
     field-strategy: 2
     auto-set-db-type: true
     db-column-underline: true
     refresh-mapper: true
+    meta-object-handler: com.cz.item.core.handlers.metaObjectHandlers.ItemMetaObjectHandler
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
-
-

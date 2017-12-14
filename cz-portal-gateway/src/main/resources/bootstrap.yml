@@ -1,8 +1,30 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: cz-portal-gateway
-  output:
-      ansi:
-        enabled: always
-server:
-  port: 8765
+  profiles:
+    active: dev
+
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+
+---
+spring:
+  profiles: prd
+  cloud:
+    config:
+      uri: http://cz-portal-config:8888
+
+---
+spring:
+  profiles: notebook
+  cloud:
+    config:
+      uri: http://cz-portal-config:8888
