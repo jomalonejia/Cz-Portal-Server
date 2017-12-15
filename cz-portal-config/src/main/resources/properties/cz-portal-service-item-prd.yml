@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.11.4.87:3307/cz?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://cz-portal-security:9100/oauth/token
+      user-authorization-uri: http://cz-portal-security:9100/oauth/authorize
+    resource:
+      user-info-uri: http://cz-portal-security:9100/user
+
+druid:
+  pool:
+    initialSize: 10
+    maxActive: 100
+    minIdle: 10
+
+
+#mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.cz.item.domain
+  type-handlers-package: com.cz.item.core.handlers.typeHandlers
+  global-config:
+    id-type: 3
+    field-strategy: 2
+    auto-set-db-type: true
+    db-column-underline: true
+    refresh-mapper: true
+    meta-object-handler: com.cz.item.core.handlers.metaObjectHandlers.ItemMetaObjectHandler
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false

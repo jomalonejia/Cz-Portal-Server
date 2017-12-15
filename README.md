@@ -29,7 +29,7 @@ Services Introduce
 
 ## Deployment
 > pre
--   load the sql file in you mysql(the backend server([Cz-Admin-Server](https://github.com/jomalonejia/Cz-Admin-Server)) and front server([Cz-Portal-Server](https://github.com/jomalonejia/Cz-Portal-Server)) share the same sql)
+-   load the sql(in cz-portal-db) file in you mysql(the backend server([Cz-Admin-Server](https://github.com/jomalonejia/Cz-Admin-Server)) and front server([Cz-Portal-Server](https://github.com/jomalonejia/Cz-Portal-Server)) share the same sql)
 -   ...
 > localhost run
 -   easiest server running flow:&nbsp;&nbsp;&nbsp;registry-->config-->security-->service-xxx-->gateway
@@ -37,6 +37,7 @@ Services Introduce
 > docker run
 -   cd Cz-Portal-Server
 -   docker-compose build (build images)
+-   docker-compose up -d cz-portal-db (init)
 -   docker-compose up -d cz-portal-registry (run registry service)
 -   docker-compose up -d cz-portal-config (run config service)
 -   docker-compose up -d (run other services)

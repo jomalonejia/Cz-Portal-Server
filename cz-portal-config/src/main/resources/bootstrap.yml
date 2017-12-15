@@ -15,8 +15,6 @@ server:
   port: 8888
 
 eureka:
-  instance:
-    appname: cz-portal-config
   client:
     service-url:
       defaultZone: http://${REGISTRY_HOST:cz-portal-registry}:8761/eureka/

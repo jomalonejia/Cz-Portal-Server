@@ -14,6 +14,7 @@ spring:
   cloud:
     config:
       uri: http://127.0.0.1:8888
+      profile: dev
 
 
 ---
@@ -22,6 +23,7 @@ spring:
   cloud:
     config:
       uri: http://cz-portal-config:8888
+      profile: prd
 
 ---
 spring:
@@ -29,4 +31,5 @@ spring:
   cloud:
     config:
       uri: http://cz-portal-config:8888
+      profile: notebook
 

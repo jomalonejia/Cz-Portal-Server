@@ -37,4 +37,3 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
 
-logging.level.org.springframework.security: DEBUG

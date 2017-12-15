@@ -1,7 +1,3 @@
-eureka:
-  instance:
-    appname: cz-portal-gateway
-
 security:
   oauth2:
     client:

@@ -1,0 +1,12 @@
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:9100/oauth/token
+      user-authorization-uri: http://localhost:9100/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:9100/user
+      prefer-token-info: false
+
+zuul:
+  sensitive-headers:
+  add-proxy-headers: true
